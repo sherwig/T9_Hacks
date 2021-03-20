@@ -19,6 +19,9 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+const texture = new THREE.TextureLoader().load('textures/circle.png');
+console.log(texture);
+
 /**
  * Galaxy
  */
@@ -33,15 +36,16 @@ const scene = new THREE.Scene()
 // parameters.insideColor = '#ff6030'
 // parameters.outsideColor = '#1b3984'
 
-var geometry
-let material
-let points
+var geometry;
+let material;
+let points;
 var circleGeometry;
 
 const parameters = {}
-parameters.count = 50000
+parameters.count = 22700
 parameters.size = 12
-parameters.radius = .05
+parameters.radius = 1.0
+parameters.radius2 = 10.0
 parameters.insideColor = '#ff6030'
 parameters.outsideColor = '#1b3984'
 
@@ -58,6 +62,7 @@ const generateGalaxy = () => {
   // geometry = new THREE.BufferGeometry()
 
   const positions = new Float32Array(parameters.count * 3)
+  // const outPositions = new Float32Array(parameters.count * 3)
   const colors = new Float32Array(parameters.count * 3)
   const scales = new Float32Array(parameters.count * 1)
   const randomness = new Float32Array(parameters.count * 3)
@@ -74,6 +79,7 @@ const generateGalaxy = () => {
   geometry.attributes = circleGeometry.attributes;
 
   const translateArray = new Float32Array(parameters.count * 3);
+  const outArray = new Float32Array(parameters.count * 3);
   // const cubeArray = new Float32Array(parameters.count * 3);
   var inc = Math.PI * (3 - Math.sqrt(5));
   var x = 0;
@@ -81,7 +87,12 @@ const generateGalaxy = () => {
   var z = 0;
   var r = 0;
   var phi = 0;
-  var radius = 1.0;
+  // var radius = 1.0;
+
+  var x2 = 0;
+  var y2 = 0;
+  var z2 = 0;
+  var r2 = 0;
 
 
   for (let i = 0, i3 = 0, l = parameters.count; i < l; i++, i3 += 3) {
@@ -92,27 +103,48 @@ const generateGalaxy = () => {
     phi = i * inc;
     x = Math.cos(phi) * r;
     z = (0, Math.sin(phi) * r);
-    x *= radius * Math.random(); // but vary the radius to not just be on the surface
-    y *= radius * Math.random();
-    z *= radius * Math.random();
+    x *= parameters.radius * Math.random(); // but vary the radius to not just be on the surface
+    y *= parameters.radius * Math.random();
+    z *= parameters.radius * Math.random();
     translateArray[i3 + 0] = x;
     translateArray[i3 + 1] = y;
     translateArray[i3 + 2] = z;
 
 
-    // Color
-    const mixedColor = insideColor.clone()
-    mixedColor.lerp(outsideColor, radius / parameters.radius)
+    var off = 2 / parameters.count;
+    y2 = i * off - 1 + off / 2;
+    r = Math.sqrt(1 - y2 * y2);
+    phi = i * inc;
+    x2 = Math.cos(phi) * r;
+    z2 = (0, Math.sin(phi) * r);
+    x2 *= parameters.radius2 * Math.random(); // but vary the radius to not just be on the surface
+    y2 *= parameters.radius2 * Math.random();
+    z2 *= parameters.radius2 * Math.random();
+    outArray[i3 + 0] = x2;
+    outArray[i3 + 1] = y2;
+    outArray[i3 + 2] = z2;
 
-    colors[i3] = mixedColor.r
-    colors[i3 + 1] = mixedColor.g
-    colors[i3 + 2] = mixedColor.b
+
+
+    // translateArray[i3 + 0] = Math.random() * 2 - 1;
+    // translateArray[i3 + 1] = Math.random() * 2 - 1;
+    // translateArray[i3 + 2] = Math.random() * 2 - 1;
+
+    // Color
+    // const mixedColor = insideColor.clone()
+    // mixedColor.lerp(outsideColor, radius / parameters.radius)
+    //
+    // colors[i3] = mixedColor.r
+    // colors[i3 + 1] = mixedColor.g
+    // colors[i3 + 2] = mixedColor.b
 
 
   }
 
-  geometry.setAttribute('position', new THREE.InstancedBufferAttribute(translateArray, 3));
-  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  geometry.setAttribute('translate', new THREE.InstancedBufferAttribute(translateArray, 3));
+  geometry.setAttribute('zoomOut', new THREE.InstancedBufferAttribute(outArray, 3));
+
+  // geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
 
   // for (let i = 0; i < parameters.count; i++) {
@@ -135,12 +167,6 @@ const generateGalaxy = () => {
   // randomness[i3 + 1] = randomY
   // randomness[i3 + 2] = randomZ
 
-
-
-
-
-
-
   //scale
   // scales[i] = Math.random();
   // }
@@ -155,17 +181,21 @@ const generateGalaxy = () => {
    * Material
    */
   material = new THREE.ShaderMaterial({
-    depthWrite: false,
+    depthWrite: true,
+    depthWrite: true,
     blending: THREE.AdditiveBlending,
     vertexColors: true,
-    // vertexShader: galaxyVertexShader,
+    vertexShader: galaxyVertexShader,
     fragmentShader: galaxyFragmentShader,
     uniforms: {
       uTime: {
-        value: 0
+        value: 0.0
       },
       map: {
-        value: new THREE.TextureLoader().load('textures/circle.png')
+        value: texture
+      },
+      radius: {
+        value: 1.0
       }
       // uSize: {
       //   value: 30 * renderer.getPixelRatio()
@@ -174,29 +204,33 @@ const generateGalaxy = () => {
 
   })
 
-  console.log(material.uniforms.map.value);
+  gui.add(material.uniforms.radius, 'value').min(0).max(10).step(0.1).name('radius');
+
+  // console.log(material.uniforms.map.value);
   /**
    * Points
    */
   // points = new THREE.Points(geometry, material)
 
   points = new THREE.Mesh(geometry, material);
-  points.scale.set(500, 500, 500);
+  points.scale.set(600, 600, 600);
   // console.log(points);
   scene.add(points)
 
 
-  const geometry2 = new THREE.BoxGeometry(100, 100, 100);
-  const material2 = new THREE.MeshBasicMaterial({
-    color: 0x00ff00
-  });
-  const cube = new THREE.Mesh(geometry2, material2);
-  scene.add(cube);
+  // const geometry2 = new THREE.BoxGeometry(100, 100, 100);
+  // const material2 = new THREE.MeshBasicMaterial({
+  //   color: 0x00ff00
+  // });
+  // const cube = new THREE.Mesh(geometry2, material2);
+  // scene.add(cube);
 }
 
 
 // gui.add(parameters, 'count').min(100).max(1000000).step(100).onFinishChange(generateGalaxy)
 // gui.add(parameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateGalaxy)
+
+
 // gui.add(parameters, 'branches').min(2).max(20).step(1).onFinishChange(generateGalaxy)
 // gui.add(parameters, 'randomness').min(0).max(2).step(0.001).onFinishChange(generateGalaxy)
 // gui.add(parameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange(generateGalaxy)
@@ -221,11 +255,11 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix()
 
   // Update renderer
-  // renderer.setSize(sizes.width, sizes.height)
-  // renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  renderer.setSize(sizes.width, sizes.height)
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  // renderer.setPixelRatio(window.devicePixelRatio);
+  // renderer.setSize(window.innerWidth, window.innerHeight);
 })
 
 /**
@@ -237,8 +271,8 @@ window.addEventListener('resize', () => {
 // camera.position.y = 3
 // camera.position.z = 3
 
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 40000);
-camera.position.z = 1400;
+const camera = new THREE.PerspectiveCamera(50, sizes.width / sizes.height, 1, 40000);
+camera.position.z = 1600;
 scene.add(camera)
 
 // Controls
@@ -263,7 +297,11 @@ const tick = () => {
   const elapsedTime = clock.getElapsedTime()
 
   //update material
-  material.uniforms.uTime.value = elapsedTime;
+
+  const time = performance.now() * 0.0005;
+
+  // material.uniforms[ "time" ].value = time;
+  material.uniforms.uTime.value = time;
 
   // Update controls
   controls.update()

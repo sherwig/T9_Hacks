@@ -139,7 +139,7 @@ gui.addColor(parameters, 'outsideColor').onFinishChange(generateGalaxy)
  */
 const sizes = {
   width: window.innerWidth,
-  height: window.innerHeight
+  height: window.innerHeight / 4
 }
 
 window.addEventListener('resize', () => {

@@ -30,6 +30,16 @@ h2 {
      margin-left: 144px;
    }
 
+/* Two column split */
+
+   .row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
 
 /* ********************************************** */
 /*	  				Navigation					  */

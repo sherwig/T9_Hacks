@@ -51,6 +51,22 @@ p{
 a { color: #ff4c33; }
 
 
+<<<<<<< HEAD
+=======
+
+.widerColumn{
+  width: 60%
+}
+
+.narrowColumn{
+  width: 40%
+}
+
+.gifAdjust{
+  margin-left: 150px;
+}
+
+>>>>>>> 85b3f610faf2535e712074ea7403ab5c0b84d203
 .row {
   display: flex;
 }

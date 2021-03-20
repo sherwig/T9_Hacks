@@ -36,17 +36,16 @@ h3 {
   margin-left: 144px;
 }
 
-
-p{
-     margin-right: 144px;
-     margin-left: 144px;
-}
-
 h4{
     font-family: "Raleway", Helvetica, sans-serif;
     font-size: 15px;
     margin-right: 10px;
     margin-left: 144px;
+}
+
+p{
+     margin-right: 144px;
+     margin-left: 144px;
 }
 
 a { color: #ff4c33; }

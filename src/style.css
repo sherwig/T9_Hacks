@@ -350,16 +350,3 @@ nav li a:hover, nav li a:active, nav li a:focus .dropdown {
 /* ********************************************** */
 /*	  				 People	Cards 				  */
 /* ********************************************** */
-
-div {
-  border: 3px solid #4CAF50;
-  padding: 5px;
-}
-
-.clearfix {
-  overflow: auto;
-}
-
-.img2 {
-  float: right;
-}

@@ -32,12 +32,12 @@ h2 {
 
 /* Two column split */
 
-   .row {
+.row {
   display: flex;
 }
 
 .column {
-  flex: 50%;
+  flex: 33.33%;
 }
 
 

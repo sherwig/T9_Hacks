@@ -5,8 +5,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>T9 Hacks</title>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <div id="chart_div"></div>
+  <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+      // Create the data table.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Country');
+      data.addColumn('number', 'Millions');
+      data.addRows([
+        ['China', 3],
+        ['Philippines', 1],
+        ['India', 1],
+        ['Indonesia', 1],
+        ['United States', 2]
+      ]);
+
+      // Set chart options
+      var options = {'title':'Countries with the most new displacements by disasters in 2016',
+                     'width':400,
+                     'height':300};
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
 
 </head>
 
@@ -87,6 +122,7 @@
       <br>
       <p style="text-align:center">In 2019, 24.9 million people experienced climate displacement- that is more than 4x the population of Colorado.</p>
       <br>
+      <div id="chart_div" style="width:400; height:300"></div>
       <p style="font-weight: bold;">Who is affected by climate displacement?</p>
       <p>People in all parts of the world are affected by climate disasters- from families losing their homes to wildfires in California to entire towns being destroyed by typhoons in the Philippines. However, not all populations are equally equipped
         to handle these extreme events and not all people (even those in the same area) are affected to the same degree. Climate change will affect everyone, but will not affect everyone equally. </p>

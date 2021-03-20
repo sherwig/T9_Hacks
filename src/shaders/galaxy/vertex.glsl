@@ -35,8 +35,8 @@ void main()
   gl_Position = projectedPosition;
 
   //size
-  gl_PointSize = aScale * uSize;
-  gl_PointSize *= ( 1.0 / - viewPosition.z );
+  // gl_PointSize = aScale * uSize;
+  // gl_PointSize *= ( 1.0 / - viewPosition.z );
 
   //color
   vColor=color;

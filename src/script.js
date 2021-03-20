@@ -33,27 +33,29 @@ const scene = new THREE.Scene()
 // parameters.insideColor = '#ff6030'
 // parameters.outsideColor = '#1b3984'
 
-let geometry = null
-let material = null
-let points = null
+var geometry
+let material
+let points
 var circleGeometry;
 
 const parameters = {}
 parameters.count = 50000
 parameters.size = 12
 parameters.radius = .05
+parameters.insideColor = '#ff6030'
+parameters.outsideColor = '#1b3984'
 
 const generateGalaxy = () => {
-  if (points !== null) {
-    geometry.dispose()
-    material.dispose()
-    scene.remove(points)
-  }
+  // if (points !== null) {
+  //   geometry.dispose()
+  //   material.dispose()
+  //   scene.remove(points)
+  // }
 
   /**
    * Geometry
    */
-  geometry = new THREE.BufferGeometry()
+  // geometry = new THREE.BufferGeometry()
 
   const positions = new Float32Array(parameters.count * 3)
   const colors = new Float32Array(parameters.count * 3)
@@ -67,7 +69,6 @@ const generateGalaxy = () => {
 
   circleGeometry = new THREE.CircleGeometry(1, 6);
 
-  //Don't understand this
   geometry = new THREE.InstancedBufferGeometry();
   geometry.index = circleGeometry.index;
   geometry.attributes = circleGeometry.attributes;
@@ -116,12 +117,6 @@ const generateGalaxy = () => {
 
   // for (let i = 0; i < parameters.count; i++) {
   //   const i3 = i * 3
-
-
-
-
-
-
   // Position
   // const radius = Math.random() * parameters.radius
   //
@@ -169,13 +164,17 @@ const generateGalaxy = () => {
       uTime: {
         value: 0
       },
-      uSize: {
-        value: 30 * renderer.getPixelRatio()
+      map: {
+        value: new THREE.TextureLoader().load('textures/circle.png')
       }
+      // uSize: {
+      //   value: 30 * renderer.getPixelRatio()
+      // }
     }
 
   })
 
+  console.log(material.uniforms.map.value);
   /**
    * Points
    */
@@ -183,8 +182,16 @@ const generateGalaxy = () => {
 
   points = new THREE.Mesh(geometry, material);
   points.scale.set(500, 500, 500);
-  console.log(points);
+  // console.log(points);
   scene.add(points)
+
+
+  const geometry2 = new THREE.BoxGeometry(100, 100, 100);
+  const material2 = new THREE.MeshBasicMaterial({
+    color: 0x00ff00
+  });
+  const cube = new THREE.Mesh(geometry2, material2);
+  scene.add(cube);
 }
 
 
@@ -214,8 +221,11 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix()
 
   // Update renderer
-  renderer.setSize(sizes.width, sizes.height)
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  // renderer.setSize(sizes.width, sizes.height)
+  // renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
 })
 
 /**
@@ -230,9 +240,6 @@ window.addEventListener('resize', () => {
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 40000);
 camera.position.z = 1400;
 scene.add(camera)
-
-
-
 
 // Controls
 const controls = new OrbitControls(camera, canvas)

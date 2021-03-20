@@ -23,23 +23,27 @@
     function drawChart() {
 
       // DATA AND OPTIONS FOR FIST CHART: NEW DISPLACEMENT
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Country');
-      data.addColumn('number', 'Millions');
-      data.addRows([
-        ['China', 7434000],
-        ['Philippines', 5930000],
-        ['India', 2400000],
-        ['Indonesia', 1246000],
-        ['United States', 1107000],
-        ['Cuba', 1079000],
-        ['Japan', 864000]
+      var data = google.visualization.arrayToDataTable([
+        ["Country", "Millions", {
+          role: "style"
+        }],
+        ['China', 7434000, '#0c5764'],
+        ['Philippines', 5930000, '#0c5764'],
+        ['India', 2400000, '#0c5764'],
+        ['Indonesia', 1246000, '#0c5764'],
+        ['United States', 1107000, '#0c5764'],
+        ['Cuba', 1079000, '#0c5764'],
+        ['Japan', 864000, '#0c5764']
       ]);
 
+
       var options = {
-        'title': 'Countries with the most new displacements by disasters in 2016',
-        'width': 600,
-        'height': 400
+        title: 'Countries with the most new displacements by disasters in 2016',
+        width: 700,
+        height: 400,
+        legend: {
+          position: "none"
+        }
       };
 
       //DATA AND OPTIONS FOR DISASTER TYPE chart
@@ -203,7 +207,11 @@
 
     <section id="home">
       <canvas class="webgl"></canvas>
-      <p style="text-align:center"> “On average, 22.7 million people are displaced every year.” <em>-<a href="https://www.internal-displacement.org/" target="_blank">Internal Displacement Monitoring Centre</a></em></p>
+      <br>
+      <h3 align=justify style="background-color:#093e47; border-radius:4px; text-align:center; padding:15px;"><b>
+          “On average, 22.7 million people are displaced every year.” <em>-<a href="https://www.internal-displacement.org/" target="_blank">IDMC</a></em></b>
+      </h3>
+      <br>
     </section>
 
 
@@ -214,13 +222,16 @@
       <p>Simply put, climate displacement is when people are forced to flee the area they live due to changes in their environment caused by climate change. These environmental changes can be more gradual (such as with a drought where food in an area
         becomes more and more scarce) or they can be sudden (such as with an extreme weather event like a hurricane). </p>
       <br>
-      <p style="text-align:center">In 2019, 24.9 million people experienced climate displacement- that is more than 4x the population of Colorado.</p>
+      <h3 align=justify style="background-color:#093e47; border-radius:4px; text-align:center; padding:15px;"><b>
+          In 2019, 24.9 million people experienced climate displacement- that is more than 4x the population of Colorado.</b>
+      </h3>
       <br>
 
       <!-- TWO COLUMNS FOR DISPLACMENT LOCATIONS -->
       <div class="row">
         <div class="column">
           <p style="font-weight: bold;">What parts of the world are affected by climate disasters and displacement?</p>
+          <p>some text here about where stuff is happening</p>
         </div>
         <div class="column">
           <br>
@@ -229,149 +240,154 @@
         </div>
       </div>
 
-
-
       <p style="font-weight: bold;">Who is affected by climate displacement?</p>
       <p>People in all parts of the world are affected by climate disasters- from families losing their homes to wildfires in California to entire towns being destroyed by typhoons in the Philippines. However, not all populations are equally equipped
         to handle these extreme events and not all people (even those in the same area) are affected to the same degree. Climate change will affect everyone, but will not affect everyone equally. </p>
       <br>
-      <p style="text-align:center">People in poorer countries are 5x more likely to be displaced by extreme weather.</p>
+      <h3 align=justify style="background-color:#093e47; border-radius:4px; text-align:center; padding:15px;"><b>
+          People in poorer countries are 5x more likely to be displaced by extreme weather.</b>
+      </h3>
+      <br>
     </section>
 
     <section id="change">
       <h2 style="text-align:center">Climate Change</h2>
-      <p>“Global warming is the long-term heating of Earth’s climate system observed since the pre-industrial period (between 1850 and 1900) due to human activities, primarily fossil fuel burning, which increases heat-trapping greenhouse gas levels
+      <p>“<strong><em>Global warming</em></strong> is the long-term heating of Earth’s climate system observed since the pre-industrial period (between 1850 and 1900) due to human activities, primarily fossil fuel burning, which increases
+        heat-trapping greenhouse gas levels
         in Earth’s atmosphere.” <em>-<a href="https://climate.nasa.gov/resources/global-warming-vs-climate-change/" target="_blank">NASA</a></em></p>
-      <p>Climate change is caused by global warming. Climate data indicates that climate change has resulted in increasing global land and ocean temperatures; rising sea levels; ice loss at Earth’s poles and in mountain glaciers; and <strong>
-          increasing frequency and severity of extreme weather (i.e., natural disasters)</strong>. <em>-<a href="https://climate.nasa.gov/resources/global-warming-vs-climate-change/" target="_blank">NASA</a></em></p>
+      <br>
+      <p>The following graph shows global temperatures relative to 1951-1980 average temperatures.</p>
+
+      <!--TEMPERATURE OVER TIME CHART-->
+
+
+      <p>“<strong><em>Climate change</em></strong> is a long-term change in the average weather patterns that have come to define Earth’s local, regional and global climates.” <em>-<a
+            href="https://climate.nasa.gov/resources/global-warming-vs-climate-change/" target="_blank">NASA</a></em></p>
+      <br>
+      <p> Climate change is caused by global warming. Climate data indicates that climate change has resulted in the increase of global land and ocean temperature; rising sea levels; ice loss at Earth’s poles and in mountain glaciers; and <strong>
+          frequency and severity changes in extreme weather (i.e., natural disasters).</strong> </p>
+
+      <!--DISASTER CHART-->
+      <div id="chart_DISASTER" style="width:1400; height:600"></div>
+
     </section>
 
-    <section>
-      <div class="container12" id="disasters">
-        <div class="row">
-          <h2 style="text-align:center">Disasters</h2>
-        </div>
-        <div class="row">
-          <p style="text-align:center"> “Natural disasters include all types of severe weather, which have the potential to pose a significant threat to human health and safety, property, critical infrastructure, and homeland security.” <em>-<a
-                href="https://www.dhs.gov/natural-disasters" target="_blank">Homeland Security</a></em></p>
-        </div>
-
-        <!--DISASTER CHART-->
-        <br>
-        <div id="chart_DISASTER" style="width:1400; height:600"></div>
-        <br>
+    <section id="disasters">
+      <h2 style="text-align:center">Disasters</h2>
+      <p style="text-align:center"> “Natural disasters include all types of severe weather, which have the potential to pose a significant threat to human health and safety, property, critical infrastructure, and homeland security.” <em>-<a
+            href="https://www.dhs.gov/natural-disasters" target="_blank">Homeland Security</a></em></p>
 
 
 
-        <br>
-        <div id="chart_TEMP" style="width:1400; height:600"></div>
-        <br>
+      <br>
+      <div id="chart_TEMP" style="width:1400; height:600"></div>
+      <br>
 
-        <!--DISASTER INFO-->
-        <div class="row">
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/blizzard.png" alt="Blizzard" style="width:100%">
-              <div class="overlay">
-                <div class="text">Blizzard</div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/draught.png" alt="Draught" style="width:100%">
-              <div class="overlay">
-                <div class="text">Draught</div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/earthquake.png" alt="Earthquake" style="width:100%">
-              <div class="overlay">
-                <div class="text">Earthquake</div>
-              </div>
+      <!--DISASTER INFO-->
+      <div class="row">
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/blizzard.png" alt="Blizzard" style="width:100%">
+            <div class="overlay">
+              <div class="text">Blizzard</div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/fire.png" alt="Wildfire" style="width:100%">
-              <div class="overlay">
-                <div class="text">Wildfire</div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/flood.png" alt="Flood" style="width:100%">
-              <div class="overlay">
-                <div class="text">Flood</div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/hail.png" alt="Hail" style="width:100%">
-              <div class="overlay">
-                <div class="text">Hail</div>
-              </div>
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/draught.png" alt="Draught" style="width:100%">
+            <div class="overlay">
+              <div class="text">Draught</div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/hurricane.png" alt="Hurricane" style="width:100%">
-              <div class="overlay">
-                <div class="text">Tropical Storms</div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/landslide.png" alt="Landslide" style="width:100%">
-              <div class="overlay">
-                <div class="text">Landslide</div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/lightning.png" alt="lightning" style="width:100%">
-              <div class="overlay">
-                <div class="text">lightning</div>
-              </div>
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/earthquake.png" alt="Earthquake" style="width:100%">
+            <div class="overlay">
+              <div class="text">Earthquake</div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/tornado.png" alt="Tornado" style="width:100%">
-              <div class="overlay">
-                <div class="text">Tornado</div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/tsunami.png" alt="Tsunami" style="width:100%">
-              <div class="overlay">
-                <div class="text">Tsunami</div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="container">
-              <img src="assets/images/icons/volcano.png" alt="Volcano" style="width:100%">
-              <div class="overlay">
-                <div class="text">Volcano</div>
-              </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/fire.png" alt="Wildfire" style="width:100%">
+            <div class="overlay">
+              <div class="text">Wildfire</div>
             </div>
           </div>
         </div>
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/flood.png" alt="Flood" style="width:100%">
+            <div class="overlay">
+              <div class="text">Flood</div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/hail.png" alt="Hail" style="width:100%">
+            <div class="overlay">
+              <div class="text">Hail</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/hurricane.png" alt="Hurricane" style="width:100%">
+            <div class="overlay">
+              <div class="text">Tropical Storms</div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/landslide.png" alt="Landslide" style="width:100%">
+            <div class="overlay">
+              <div class="text">Landslide</div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/lightning.png" alt="lightning" style="width:100%">
+            <div class="overlay">
+              <div class="text">lightning</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/tornado.png" alt="Tornado" style="width:100%">
+            <div class="overlay">
+              <div class="text">Tornado</div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/tsunami.png" alt="Tsunami" style="width:100%">
+            <div class="overlay">
+              <div class="text">Tsunami</div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="container">
+            <img src="assets/images/icons/volcano.png" alt="Volcano" style="width:100%">
+            <div class="overlay">
+              <div class="text">Volcano</div>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
 

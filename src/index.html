@@ -5,6 +5,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>T9 Hacks</title>
+  <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+      // DATA AND OPTIONS FOR FIST CHART: NEW DISPLACEMENT
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Country');
+      data.addColumn('number', 'Millions');
+      data.addRows([
+        ['China', 7434000],
+        ['Philippines', 5930000],
+        ['India', 2400000],
+        ['Indonesia', 1246000],
+        ['United States', 1107000],
+        ['Cuba', 1079000],
+        ['Japan', 864000]
+      ]);
+
+      var options = {'title':'Countries with the most new displacements by disasters in 2016',
+                     'width':600,
+                     'height':400};
+
+      //DATA AND OPTIONS FOR DISASTER TYPE chart
+      var dataDISASTER = google.visualization.arrayToDataTable([
+        ['Disaster', 'Flood', 'Extreme Weather', 'Drought', 'Extreme Temperature',
+         'Earthquake', 'Landslide', 'Wildfire', 'Volcanic Activity', { role: 'annotation' } ],
+        ['1960', 7, 20, 1, 1, 9, 2, 1, 1, ''],
+        ['1965', 19, 19, 7, 1, 7, 5, 1, 1, ''],
+        ['1970', 31, 24, 2, 1.33, 11, 5, 3, 2.5, ''],
+        ['1975', 17, 28, 1, 3, 4, 5, 2, 3, ''],
+        ['1980', 39, 42, 14, 3, 24, 4, 4, 2, ''],
+        ['1985', 58, 51, 3, 8, 22, 6, 13, 2, ''],
+        ['1990', 60, 137, 12, 13, 43, 4, 4, 2, ''],
+        ['1995', 94, 81, 6, 13, 26, 16, 7, 5, ''],
+        ['2000', 157, 102, 27, 31, 30, 28, 30, 5, ''],
+        ['2005', 193, 130, 20, 30, 25, 13, 13, 8, ''],
+        ['2010', 184, 94, 17, 29, 24, 32, 7, 6, ''],
+        ['2015', 160, 118, 28, 12, 23, 20, 12, 6, ''],
+        ['2019', 170, 85, 15, 20, 32, 22, 13, 4, '']
+      ]);
+
+      var optionsDISASTER = {
+        width: 1400,
+        height: 600,
+        legend: { position: 'top', maxLines: 3 },
+        bar: { groupWidth: '75%' },
+        isStacked: true,
+        title: 'Number of Global Natural Disasters 1960 - 2019',
+        colors: ['#062b32', '#0c5764', '#138396', '#19afc9', '#35cce5', '#68d8eb', '#9ae5f2', '#ccf2f8']
+      };
+
+      // Instantiate DISPLACEMENT chart
+      var chart = new google.visualization.BarChart(document.getElementById('chart_DIS'));
+      chart.draw(data, options);
+
+      // Instantiate DISASTER chart
+      var chartDISASTER = new google.visualization.ColumnChart(document.getElementById('chart_DISASTER'));
+      chartDISASTER.draw(dataDISASTER, optionsDISASTER);
+
+    }
+
+
+    </script>
+
 </head>
 
 <body>
@@ -84,6 +159,21 @@
       <br>
       <p style="text-align:center">In 2019, 24.9 million people experienced climate displacement- that is more than 4x the population of Colorado.</p>
       <br>
+
+      <!-- TWO COLUMNS FOR DISPLACMENT LOCATIONS -->
+      <div class="row">
+        <div class="column">
+          <p style="font-weight: bold;">What parts of the world are affected by climate disasters and displacement?</p>
+        </div>
+        <div class="column">
+                <br>
+                <div id="chart_DIS" style="width:600; height:400"></div>
+                <br>
+        </div>
+      </div>
+
+
+
       <p style="font-weight: bold;">Who is affected by climate displacement?</p>
       <p>People in all parts of the world are affected by climate disasters- from families losing their homes to wildfires in California to entire towns being destroyed by typhoons in the Philippines. However, not all populations are equally equipped
         to handle these extreme events and not all people (even those in the same area) are affected to the same degree. Climate change will affect everyone, but will not affect everyone equally. </p>
@@ -103,53 +193,123 @@
       <div class="container12" id="disasters">
         <div class="row">
           <h2 style="text-align:center">Disasters</h2>
+        </div>
+        <div class="row">
           <p style="text-align:center"> “Natural disasters include all types of severe weather, which have the potential to pose a significant threat to human health and safety, property, critical infrastructure, and homeland security.” <em>-<a
                 href="https://www.dhs.gov/natural-disasters" target="_blank">Homeland Security</a></em></p>
         </div>
+
+        <!--DISASTER CHART-->
+        <br>
+        <div id="chart_DISASTER" style="width:1400; height:600"></div>
+        <br>
+
+        <!--DISASTER INFO-->
         <div class="row">
-          <div class="column4">
-            <img src="assets/images/icons/blizzard.png">
-          </div>
-          <div class="column4">
-            <img src="assets/images/icons/draught.png">
-          </div>
-          <div class="column4">
-            <img src="assets/images/icons/earthquake.png">
-          </div>
-        </div>
-        <div class="row">
-          <div class="column4">
-            <img src="assets/images/icons/fire.png">
-          </div>
-          <div class="column4">
-            <img src="assets/images/icons/flood.png">
-          </div>
-          <div class="column4">
-            <img src="assets/images/icons/hail.png">
-          </div>
-        </div>
-        <div class="row">
-          <div class="column4">
-            <img src="assets/images/icons/hurricane.png">
-          </div>
-          <div class="column4">
-            <img src="assets/images/icons/landslide.png">
-          </div>
-          <div class="column4">
-            <img src="assets/images/icons/lightning.png">
-          </div>
-          <div class="row">
-            <div class="column4">
-              <img src="assets/images/icons/tornado.png">
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/blizzard.png" alt="Blizzard" style="width:100%">
+              <div class="overlay">
+                <div class="text">Blizzard</div>
+              </div>
             </div>
-            <div class="column4">
-              <img src="assets/images/icons/tsunami.png">
+          </div>
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/draught.png" alt="Draught" style="width:100%">
+              <div class="overlay">
+                <div class="text">Draught</div>
+              </div>
             </div>
-            <div class="column4">
-              <img src="assets/images/icons/volcano.png">
+          </div>
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/earthquake.png" alt="Earthquake" style="width:100%">
+              <div class="overlay">
+                <div class="text">Earthquake</div>
+              </div>
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/fire.png" alt="Wildfire" style="width:100%">
+              <div class="overlay">
+                <div class="text">Wildfire</div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/flood.png" alt="Flood" style="width:100%">
+              <div class="overlay">
+                <div class="text">Flood</div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/hail.png" alt="Hail" style="width:100%">
+              <div class="overlay">
+                <div class="text">Hail</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/hurricane.png" alt="Hurricane" style="width:100%">
+              <div class="overlay">
+                <div class="text">Tropical Storms</div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/landslide.png" alt="Landslide" style="width:100%">
+              <div class="overlay">
+                <div class="text">Landslide</div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/lightning.png" alt="lightning" style="width:100%">
+              <div class="overlay">
+                <div class="text">lightning</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/tornado.png" alt="Tornado" style="width:100%">
+              <div class="overlay">
+                <div class="text">Tornado</div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/tsunami.png" alt="Tsunami" style="width:100%">
+              <div class="overlay">
+                <div class="text">Tsunami</div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="container">
+              <img src="assets/images/icons/volcano.png" alt="Volcano" style="width:100%">
+              <div class="overlay">
+                <div class="text">Volcano</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="stories">

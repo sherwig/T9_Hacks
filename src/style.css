@@ -68,8 +68,8 @@ html, body {
          text-decoration: none; }
        nav li a:hover, nav li a:active, nav li a:focus .dropdown{
          text-decoration: none;
-         color: white;
-         background: #ef5060; }
+         color: #093e47;
+         background: #c1d1d4; }
 
    #navigationLarge {
      height: 50px;

@@ -18,12 +18,12 @@ void main()
   // gl_FragColor=vec4(vec3(strength),1.0);
 
   //Light Point Pattern
-  float strength = distance(gl_PointCoord,vec2(0.5));
-  strength = 1.0-strength;
-  strength = pow(strength,10.0);
+  // float strength = distance(gl_PointCoord, vec2(0.5));
+  // strength = 1.0-strength;
+  // strength = pow(strength,10.0);
+  //
+  // vec3 color = mix(vec3(0.0),vColor,strength);
 
-  vec3 color = mix(vec3(0.0),vColor,strength);
-
-  gl_FragColor=vec4(color*abs(sin(uTime*0.2)),1.0);
+  gl_FragColor=vec4(1.0,0.7,0.2,1.0);
 
 }

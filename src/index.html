@@ -6,19 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>T9 Hacks</title>
   <!--Load the AJAX API-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    // Load the Visualization API and the piechart package.
+    google.charts.load('current', {
+      'packages': ['corechart', 'line']
 
-      // Load the Visualization API and the piechart package.
-      google.charts.load('current', {'packages':['corechart']});
+    });
 
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
 
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
 
       // DATA AND OPTIONS FOR FIST CHART: NEW DISPLACEMENT
       var data = new google.visualization.DataTable();
@@ -34,14 +36,19 @@
         ['Japan', 864000]
       ]);
 
-      var options = {'title':'Countries with the most new displacements by disasters in 2016',
-                     'width':600,
-                     'height':400};
+      var options = {
+        'title': 'Countries with the most new displacements by disasters in 2016',
+        'width': 600,
+        'height': 400
+      };
 
       //DATA AND OPTIONS FOR DISASTER TYPE chart
       var dataDISASTER = google.visualization.arrayToDataTable([
         ['Disaster', 'Flood', 'Extreme Weather', 'Drought', 'Extreme Temperature',
-         'Earthquake', 'Landslide', 'Wildfire', 'Volcanic Activity', { role: 'annotation' } ],
+          'Earthquake', 'Landslide', 'Wildfire', 'Volcanic Activity', {
+            role: 'annotation'
+          }
+        ],
         ['1960', 7, 20, 1, 1, 9, 2, 1, 1, ''],
         ['1965', 19, 19, 7, 1, 7, 5, 1, 1, ''],
         ['1970', 31, 24, 2, 1.33, 11, 5, 3, 2.5, ''],
@@ -60,12 +67,61 @@
       var optionsDISASTER = {
         width: 1400,
         height: 600,
-        legend: { position: 'top', maxLines: 3 },
-        bar: { groupWidth: '75%' },
+        legend: {
+          position: 'top',
+          maxLines: 3
+        },
+        bar: {
+          groupWidth: '75%'
+        },
         isStacked: true,
         title: 'Number of Global Natural Disasters 1960 - 2019',
         colors: ['#062b32', '#0c5764', '#138396', '#19afc9', '#35cce5', '#68d8eb', '#9ae5f2', '#ccf2f8']
       };
+
+
+      // var tempChart =
+      var dataTemp = new google.visualization.DataTable();
+      dataTemp.addColumn('string', 'Year');
+      dataTemp.addColumn('number', 'Mean Temperature Change');
+      // data.addColumn('number', 'The Avengers');
+      // data.addColumn('number', 'Transformers: Age of Extinction');
+
+      dataTemp.addRows([
+        ['1960', -0.03],
+        ['1965', -0.11],
+        ['1970', 0.03],
+        ['1975', -0.01],
+        ['1980', 0.26],
+        ['1985', 0.12],
+        ['1990', 0.45],
+        ['1995', 0.45],
+        ['2000', 0.39],
+        ['2005', 0.68],
+        ['2010', 0.72],
+        ['2015', 0.90],
+        ['2019', 1.02]
+      ]);
+
+      var optionsTemp = {
+        chart: {
+          title: 'Global Land-Ocean Temperature Index',
+          subtitle: 'since 1960'
+        },
+        series: {
+          0: {
+            color: '#e2431e'
+          }
+        },
+        // lineWidth: 50,
+        width: 1200,
+        height: 700
+      };
+
+      var chartTemp = new google.charts.Line(document.getElementById('chart_TEMP'));
+
+      chartTemp.draw(dataTemp, google.charts.Line.convertOptions(optionsTemp));
+
 
       // Instantiate DISPLACEMENT chart
       var chart = new google.visualization.BarChart(document.getElementById('chart_DIS'));
@@ -75,10 +131,11 @@
       var chartDISASTER = new google.visualization.ColumnChart(document.getElementById('chart_DISASTER'));
       chartDISASTER.draw(dataDISASTER, optionsDISASTER);
 
+
+
+
     }
-
-
-    </script>
+  </script>
 
 </head>
 
@@ -166,9 +223,9 @@
           <p style="font-weight: bold;">What parts of the world are affected by climate disasters and displacement?</p>
         </div>
         <div class="column">
-                <br>
-                <div id="chart_DIS" style="width:600; height:400"></div>
-                <br>
+          <br>
+          <div id="chart_DIS" style="width:600; height:400"></div>
+          <br>
         </div>
       </div>
 
@@ -202,6 +259,12 @@
         <!--DISASTER CHART-->
         <br>
         <div id="chart_DISASTER" style="width:1400; height:600"></div>
+        <br>
+
+
+
+        <br>
+        <div id="chart_TEMP" style="width:1400; height:600"></div>
         <br>
 
         <!--DISASTER INFO-->

@@ -8,6 +8,10 @@ body {
   /* overflow: hidden; */
 }
 
+h2 {
+  font-family: "Comic Sans MS";
+  }
+
 .webgl {
   /* position: fixed; */
   /* top: 0;

@@ -53,7 +53,17 @@ a { color: #ff4c33; }
 
 
 
-/* Two column split */
+.widerColumn{
+  width: 60%
+}
+
+.narrowColumn{
+  width: 40%
+}
+
+.gifAdjust{
+  margin-left: 150px;
+}
 
 .row {
   display: flex;

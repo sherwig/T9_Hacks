@@ -51,8 +51,6 @@ p{
 a { color: #ff4c33; }
 
 
-
-
 .row {
   display: flex;
 }
@@ -331,4 +329,21 @@ nav li a:hover, nav li a:active, nav li a:focus .dropdown {
     outline: none; */
   width: 800px;
   height: 600px;
+}
+
+/* ********************************************** */
+/*	  				 People	Cards 				  */
+/* ********************************************** */
+
+div {
+  border: 3px solid #4CAF50;
+  padding: 5px;
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+.img2 {
+  float: right;
 }

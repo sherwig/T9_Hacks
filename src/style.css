@@ -60,10 +60,25 @@ a { color: #ff4c33; }
   width: 40%
 }
 
+.textColumn{
+  width: 55%
+}
+
+.chartColumn{
+  width: 45%
+}
+
+.rowTEST {
+  display: flex;
+}
+
 .gifAdjust{
   margin-left: 150px;
 }
 
+.chartAdjust{
+  margin-left: -75px;
+}
 
 .row {
   display: flex;

@@ -51,7 +51,7 @@ p{
 a { color: #ff4c33; }
 
 
-
+/* Columns for quote + gif */
 .widerColumn{
   width: 60%
 }
@@ -60,6 +60,7 @@ a { color: #ff4c33; }
   width: 40%
 }
 
+/* Columns for chart + text one */
 .textColumn{
   width: 55%
 }
@@ -78,6 +79,19 @@ a { color: #ff4c33; }
 
 .chartAdjust{
   margin-left: -75px;
+}
+
+/* Columns for chart + text two- Climate change */
+.leftColumn{
+  width: 55%
+}
+
+.rightColumn{
+  width: 45%
+}
+
+.rowCLIMATE {
+  display: flex;
 }
 
 .row {

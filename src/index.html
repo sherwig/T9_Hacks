@@ -118,8 +118,8 @@
           }
         },
         // lineWidth: 50,
-        width: 1200,
-        height: 700
+        width: 800,
+        height: 400
       };
 
       var chartTemp = new google.charts.Line(document.getElementById('chart_TEMP'));
@@ -266,10 +266,21 @@
 
     <section id="change">
       <h2 style="text-align:center">Climate Change</h2>
-      <p>“<strong><em>Global warming</em></strong> is the long-term heating of Earth’s climate system observed since the pre-industrial period (between 1850 and 1900) due to human activities, primarily fossil fuel burning, which increases
-        heat-trapping greenhouse gas levels
-        in Earth’s atmosphere.” <em>-<a href="https://climate.nasa.gov/resources/global-warming-vs-climate-change/" target="_blank">NASA</a></em></p>
-<br>
+
+      <div class="rowCLIMATE">
+        <div class="leftColumn">
+          <br>
+          <p>“<strong><em>Global warming</em></strong> is the long-term heating of Earth’s climate system observed since the pre-industrial period (between 1850 and 1900) due to human activities, primarily fossil fuel burning, which increases
+            heat-trapping greenhouse gas levels
+            in Earth’s atmosphere.” <em>-<a href="https://climate.nasa.gov/resources/global-warming-vs-climate-change/" target="_blank">NASA</a></em></p>
+        </div>
+        <div class="rightColumn">
+                <br>
+                <div id="chart_TEMP" style="width:800; height:400"></div>
+                <br>
+        </div>
+      </div>
+      <br>
         <p>“<strong><em>Climate change</em></strong> is a long-term change in the average weather patterns that have come to define Earth’s local, regional and global climates.” <em>-<a href="https://climate.nasa.gov/resources/global-warming-vs-climate-change/" target="_blank">NASA</a></em> Climate change is caused by global warming. Climate data indicates that climate change has resulted in increasing global land and ocean temperatures; rising sea levels; ice loss at Earth’s poles and in mountain glaciers; and <strong> increasing frequency and severity of extreme weather (i.e., natural disasters)</strong>.</p>
           <!--DISASTER CHART-->
           <div style="overflow-x:auto;" id="chart_DISASTER" style="width:1400; height:600"></div>
@@ -280,11 +291,6 @@
       <p style="text-align:center"> “Natural disasters include all types of severe weather, which have the potential to pose a significant threat to human health and safety, property, critical infrastructure, and homeland security.” <em>-<a
             href="https://www.dhs.gov/natural-disasters" target="_blank">Homeland Security</a></em></p>
 
-
-
-      <br>
-      <div id="chart_TEMP" style="width:1400; height:600"></div>
-      <br>
 
       <!--DISASTER INFO-->
       <div class="row">

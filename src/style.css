@@ -512,3 +512,14 @@ nav li a:hover, nav li a:active, nav li a:focus .dropdown {
   width: 800px;
   height: 600px;
 }
+
+
+/* **************************************** */
+/*					Footer					*/
+/* **************************************** */
+footer {
+  text-align: right;
+  padding: 3px;
+  background-color: #4b8994;
+  color: white;
+}

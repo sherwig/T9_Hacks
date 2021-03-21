@@ -35,7 +35,6 @@ h3 {
   margin-left: 144px;
 }
 
-<<<<<<< Updated upstream
 h4{
     font-family: "Raleway", Helvetica, sans-serif;
     font-size: 15px;
@@ -123,7 +122,6 @@ a {
 }
 
 /* Two column split */
->>>>>>> Stashed changes
 .row {
   display: flex;
 }
@@ -237,8 +235,7 @@ a {
 <<<<<<< Updated upstream
 =======
 } */
->>>>>>> Stashed changes
-=======
+
 .button {
   border: none;
   color: white;
@@ -253,7 +250,6 @@ a {
   position: absolute;
 }
 
->>>>>>> Stashed changes
 /* ********************************************** */
 /*	  				Navigation					  */
 /* ********************************************** */

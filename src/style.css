@@ -68,6 +68,25 @@ a {
   width: 40%
 }
 
+.containerEM {
+  height: 200px;
+  position: relative;
+}
+
+.centerEM {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.newP{
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
 /* Columns for chart + text one */
 .textColumn {
   width: 55%
@@ -279,7 +298,7 @@ a {
   margin: 4px 2px;
   cursor: pointer;
   background-color: #093e47;
-  position: absolute;
+  position: relative;
 }
 
 /* ********************************************** */

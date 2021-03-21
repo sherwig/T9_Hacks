@@ -35,37 +35,37 @@ h3 {
   margin-left: 144px;
 }
 
-<<<<<<< Updated upstream
-h4{
-    font-family: "Raleway", Helvetica, sans-serif;
-    font-size: 15px;
-    margin-right: 10px;
-    margin-left: 144px;
+h4 {
+  font-family: "Raleway", Helvetica, sans-serif;
+  font-size: 15px;
+  margin-right: 10px;
+  margin-left: 144px;
 }
 
-p{
-     margin-right: 144px;
-     margin-left: 144px;
+p {
+  margin-right: 144px;
+  margin-left: 144px;
 }
 
-a { color: #ff4c33; }
-
+a {
+  color: #ff4c33;
+}
 
 /* Columns for quote + gif */
-.widerColumn{
+.widerColumn {
   width: 60%
 }
 
-.narrowColumn{
+.narrowColumn {
   width: 40%
 }
 
 /* Columns for chart + text one */
-.textColumn{
+.textColumn {
   width: 55%
 }
 
-.chartColumn{
+.chartColumn {
   width: 45%
 }
 
@@ -73,20 +73,20 @@ a { color: #ff4c33; }
   display: flex;
 }
 
-.gifAdjust{
+.gifAdjust {
   margin-left: 150px;
 }
 
-.chartAdjust{
+.chartAdjust {
   margin-left: -75px;
 }
 
 /* Columns for chart + text two- Climate change */
-.leftColumn{
+.leftColumn {
   width: 55%
 }
 
-.rightColumn{
+.rightColumn {
   width: 45%
 }
 
@@ -94,7 +94,6 @@ a { color: #ff4c33; }
   display: flex;
 }
 
-=======
 p {
   margin-right: 144px;
   margin-left: 144px;
@@ -112,7 +111,6 @@ a {
 }
 
 /* Two column split */
->>>>>>> Stashed changes
 .row {
   display: flex;
 }
@@ -225,7 +223,6 @@ a {
 
 =======
 } */
->>>>>>> Stashed changes
 /* ********************************************** */
 /*	  				Navigation					  */
 /* ********************************************** */

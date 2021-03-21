@@ -76,13 +76,10 @@ a { color: #ff4c33; }
   margin-left: 150px;
 }
 
-<<<<<<< HEAD
-=======
 .chartAdjust{
   margin-left: -75px;
 }
 
->>>>>>> bd07b1e67c5bc50116e69cc6cd7fd558d0650407
 .row {
   display: flex;
 }

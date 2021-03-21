@@ -51,8 +51,6 @@ p{
 a { color: #ff4c33; }
 
 
-<<<<<<< HEAD
-=======
 
 .widerColumn{
   width: 60%
@@ -62,10 +60,29 @@ a { color: #ff4c33; }
   width: 40%
 }
 
+.textColumn{
+  width: 55%
+}
+
+.chartColumn{
+  width: 45%
+}
+
+.rowTEST {
+  display: flex;
+}
+
 .gifAdjust{
   margin-left: 150px;
 }
 
+<<<<<<< HEAD
+=======
+.chartAdjust{
+  margin-left: -75px;
+}
+
+>>>>>>> bd07b1e67c5bc50116e69cc6cd7fd558d0650407
 .row {
   display: flex;
 }
@@ -363,7 +380,3 @@ nav li a:hover, nav li a:active, nav li a:focus .dropdown {
   width: 800px;
   height: 600px;
 }
-
-/* ********************************************** */
-/*	  				 People	Cards 				  */
-/* ********************************************** */
